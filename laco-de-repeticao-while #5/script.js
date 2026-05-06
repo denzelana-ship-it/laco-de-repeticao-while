@@ -1,14 +1,23 @@
-let saldo = 1000; 
+let saldo = 500.00; 
 
 while (saldo > 0) {
-    let saque = parseFloat(prompt(`Saldo atual: R$ ${saldo}\nQuanto deseja sacar?`));
+    let saque = parseFloat(prompt(`Saldo disponível: R$ ${saldo.toFixed(2)}
+Quanto deseja sacar?`));
 
-    if (saque <= saldo && saque > 0) {
-        saldo -= saque;
-        alert(`Saque realizado! Saldo restante: R$ ${saldo}`);
-    } else {
-        alert("Saldo insuficiente ou valor inválido! Tente um valor menor.");
+    if (saque > 0 && saque <= saldo) {
+        let saldoAnterior = saldo;
+        saldo = saldo - saque;
+        
+        alert(`Saque de R$ ${saque.toFixed(2)} realizado!
+Saldo anterior: R$ ${saldoAnterior.toFixed(2)}
+Sobra atual: R$ ${saldo.toFixed(2)}`);
+    } 
+    else if (saque > saldo) {
+        alert("Saldo insuficiente! Você não tem esse valor.");
+    }
+    else {
+        alert("Valor de saque inválido.");
     }
 }
 
-alert("Saldo zerado. Encerrando operações.");
+alert("Sessão encerrada. Saldo final: R$ " + saldo.toFixed(2));

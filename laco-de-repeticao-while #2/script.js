@@ -1,15 +1,19 @@
-let soma = 0, quantidade = 0;
+let soma = 0;
+let contador = 0;
+let nota = 0;
 
-while (true) {
-    let nota = Number(prompt("Nota (0-10) ou negativo para sair:"));
-
-    if (isNaN(nota)) continue;
-    if (nota < 0) break;
-
-    if (nota <= 10) {
+while (nota >= 0) {
+    nota = parseFloat(prompt("Digite uma nota (0 a 10) ou um número negativo para sair:"));
+    
+    if (nota >= 0 && nota <= 10) {
         soma += nota;
-        quantidade++;
+        contador++;
     }
 }
 
-alert(`Média: ${(quantidade ? soma / quantidade : 0).toFixed(2)}`);
+let media = 0;
+if (contador > 0) {
+    media = soma / contador;
+}
+
+alert("Quantidade de notas: " + contador + "\nMédia final: " + media.toFixed(2));
